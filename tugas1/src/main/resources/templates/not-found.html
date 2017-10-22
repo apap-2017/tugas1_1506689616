@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+       	<h3 style="padding-top: 50px; text-align: center;" th:text="${flag} == 'nik'? 'Data Penduduk dengan NIK ' + ${nik} : 'Data Keluarga dengan NKK ' + ${nkk}"></h3>
+       	<h3 style="text-align: center;">Tidak Ditemukan</h3>
+       	<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>
+

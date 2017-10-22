@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <style>
+    	.hover:hover {
+    		background-color: white;
+    	}
+    </style>
+    <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<div style="height: 50vh; background-color: #3c3c3c; font-family: 'Lora', serif; text-align: center; vertical-align: middle; color: #4c908a;">
+    		<h1 style="margin: 0; padding-top: 50px;">Sistem Informasi Kependudukan Online </h1> 
+    		<h1 style="padding-bottom: 50px;"> Provinsi DKI Jakarta </h1>
+    		<a href="#caridata" id="jump" style="text-decoration: none; color: #4c908a;">
+    			<div class="hover" style="margin: auto; width: 150px; height: 70px; line-height: 60px; border: 5px solid #457a74; text-align: center; font-size: 17px;">
+    				<p>Cari Data</p>
+    			</div>
+    		</a>
+    	</div>
+		<div id="caridata" style="height: 100vh; font-family: 'Droid Serif', serif; text-align: center;"> 
+			<div style="margin: 0; border-bottom: 2px solid #457a74; height: 50vh; background-color: #457a74;">
+				<h3 style="margin: 0; padding-top: 40px; padding-bottom: 20px; color: white;"> Lihat Data Penduduk Berdasarkan NIK</h3>
+				<h5 style="color: white;"> Masukkan Nomor Induk Kependudukan </h5>
+				<form action="/penduduk" method="get">
+					<div>
+						<input type="text" name="nik" th:required="required" />
+					</div>
+					<div>
+						<button class="btn btn-primary" style="padding: 10px; padding-left: 20px; padding-right: 20px; margin-top: 10px;" type="submit">Lihat</button>
+					</div>
+				</form>
+			</div>
+			<div> 
+				<h3 style="padding-top: 40px; padding-bottom: 20px;"> Lihat Data Penduduk Berdasarkan NKK</h3>
+				<p> Masukkan Nomor Kartu Keluarga </p>
+				<form action="/keluarga" method="get">
+					<div>
+						<input type="text" name="nkk" th:required="required"/>
+					</div>
+					<div>
+						<button class="btn btn-primary" style="padding: 10px; padding-left: 20px; padding-right: 20px; margin-top: 10px;" type="submit">Lihat</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div th:replace="fragments/fragment :: footer"></div>
+		
+		
+		<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#jump").on('click', function(event) {
+					if (this.hash !== "") {
+						event.preventDefault();
+						var hash = this.hash;
+						$('html, body').animate({
+					        scrollTop: $(hash).offset().top
+					      }, 500, function(){
+					    	  window.location.hash = hash;
+					      });
+					}
+				});
+			});
+		</script>
+    </body>
+</html>

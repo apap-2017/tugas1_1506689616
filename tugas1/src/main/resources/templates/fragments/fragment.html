@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:fragment="head">
+		<title th:text="${title}">Fragment</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" href="/bootstrap-3.3.7/css/bootstrap.min.css" />
+		<link href="https://fonts.googleapis.com/css?family=Droid+Serif|Lora:700" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css" />
+	</head>
+	<body>
+		<div th:fragment="header">
+			<nav class="navbar navbar-inverse" style="border-radius: 0px; font-family: 'Droid Serif', serif; padding: 0; margin: 0;">
+			<div class="container-fluid">
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="/">SI Kependudukan</a>
+    			</div>
+    			<ul class="nav navbar-nav">
+      				<li><a href="/">Home</a></li>
+      				<li class="dropdown">
+        				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Tambah Data
+        					<span class="caret"></span></a>
+        				<ul class="dropdown-menu">
+          					<li><a href="/penduduk/tambah">Data Penduduk</a></li>
+          					<li><a href="/keluarga/tambah">Data Keluarga</a></li>
+        				</ul>
+      				</li>
+    			</ul>
+  			</div>
+		</nav>
+		</div>
+
+		<div th:fragment="footer" style="position: fixed; bottom: 0;">
+			<p> Ricca Fitriani @ 2017 </p>
+		</div>
+	</body>
+</html>

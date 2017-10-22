@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<h3 style="padding-top: 50px; text-align: center;" th:text="${title} == 'Gagal Mengubah Data'? 'Gagal Mengubah !' : 'Gagal Menambahkan !'">Gagal !</h3>
+       	<h3 style="text-align: center;" th:if="${flag} == 'notmatchkeluarga'">Kelurahan, Kecamatan, Kota Harus Berada Pada Satu Domisili yang Sama </h3>
+       	<h3 style="text-align: center;" th:if="${flag} == 'notfoundkeluarga'">Kelurahan/Kecamatan/Kota Tidak Ditemukan></h3>
+       	<h3 style="text-align: center;" th:if="${flag} == 'notfoundpenduduk'">Id Keluarga Tidak Ditemukan</h3>
+       	<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>
+

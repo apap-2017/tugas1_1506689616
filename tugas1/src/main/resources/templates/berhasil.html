@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head th:replace="fragments/fragment :: head"></head>
+   <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<h1 style="padding-top: 20px; text-align: center;">Sukses !</h1>
+       	<h3 style="padding-top: 30px; text-align: center;" th:text="${flag} == 'nik'? 'Penduduk dengan NIK ' + ${nik} : 'Keluarga dengan NKK ' + ${nkk}"></h3>
+       	<h3 style="text-align: center;" th:if="${berhasil} == 'tambah'">Berhasil Ditambahkan</h3>
+       	<h3 style="text-align: center;" th:if="${berhasil} == 'ubah'">Berhasil Diubah</h3>
+       	<h3 style="text-align: center;" th:if="${berhasil} == 'setwafat'">Sudah Tidak Aktif</h3>
+       	<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+</html>

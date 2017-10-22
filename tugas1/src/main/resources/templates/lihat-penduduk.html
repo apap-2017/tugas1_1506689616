@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <body style="background-color: #caced1; font-family: 'Droid Serif'">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<div style="padding-top: 30px; padding: 50px; padding-bottom: 20px;">
+	    	<h3 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}"></h3>
+	    	<div class="row">
+	    		<div class="col-md-6">
+	    			<p>NIK </p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.nik}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Nama</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.nama}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Tempat/Tanggal Lahir</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Alamat</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.alamat}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>RT/RW</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.rt} + '/' + ${penduduk.rw}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Kelurahan/Desa</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.nama_kelurahan}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Kecamatan</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.nama_kecamatan}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Kota</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.nama_kota}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Golongan Darah</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.golongan_darah}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Agama</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.agama}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Status Perkawinan</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.status_perkawinan}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Pekerjaan</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<p th:text="${penduduk.pekerjaan}"></p>
+	    		</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Kewarganegaraan</p>
+	    		</div>
+	    		<div class="col-md-6">
+		    		<div th:switch="${penduduk.is_wni}"> 
+		  				<p th:case="'1'">WNI</p>
+		    			<p th:case="'0'">WNA</p>
+		    		</div>
+		    	</div>
+	  		</div>
+	  		<div class="row">
+	    		<div class="col-md-6">
+	    			<p>Status Kematian</p>
+	    		</div>
+	    		<div class="col-md-6">
+	    			<div th:switch="${penduduk.is_wafat}">
+	    				<p th:case="'0'">Hidup</p>
+	    				<p th:case="'1'">Wafat</p>
+	    			</div>
+	    		</div>
+	  		</div>
+	  	</div>
+  		<div style="padding-bottom: 30px; padding-left: 50px;">
+	  		<form action="/penduduk/mati" method="post">
+	  			<input type="hidden" name="nik" th:value="${penduduk.nik}"/>
+	  			<button type="submit" th:attr="class=${penduduk.is_wafat} == '1'? 'btn btn-primary disabled' : 'btn btn-primary active', id=${penduduk.is_wafat} == '1'? 'inactive' : 'active'">Nonaktifkan</button>
+	  		</form>
+  		</div>
+
+  		<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script>
+		$(document).ready(function(){
+			$('#inactive').prop('disabled', true);
+		});
+		</script>
+    </body>
+</html>
+

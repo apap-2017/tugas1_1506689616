@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head th:replace="fragments/fragment :: head"></head>
+   <body style="background-color: #caced1; font-family: 'Droid Serif'">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<div style="padding-top: 30px; padding: 50px; padding-bottom: 20px;">
+	    	<h3 th:text="'Lihat Data Keluarga - ' + ${keluarga.nomor_kk}"></h3>
+	    	<div class="row">
+	    		<div class="col-md-6">
+	    			<div class="col-md-6">
+	    				<p>NKK</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p th:text="${keluarga.nomor_kk}"></p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p>Alamat</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p th:text="${keluarga.alamat}"></p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p>RT/RW</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p th:text="${keluarga.rt} + '/' + ${keluarga.rw}"></p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p>Kelurahan/Desa</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p th:text="${keluarga.nama_kelurahan}"></p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p>Kecamatan</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p th:text="${keluarga.nama_kecamatan}"></p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p>Kota</p>
+	    			</div>
+	    			<div class="col-md-6">
+	    				<p th:text="${keluarga.nama_kota}"></p>
+	    			</div>		
+	    		</div>
+	  		</div>
+	  		<div class="container" style="padding-top: 30px;">          
+	  			<table class="table table-bordered" style="border: 1px solid black;">
+	    		<thead>
+					<tr>
+				    	<th style="border: 1px solid black;">No</th>
+				        <th style="border: 1px solid black;">Nama Lengkap</th>
+				        <th style="border: 1px solid black;">NIK</th>
+				        <th style="border: 1px solid black;">Jenis Kelamin</th>
+				        <th style="border: 1px solid black;">Tempat Lahir</th>
+				        <th style="border: 1px solid black;">Tanggal Lahir</th>
+				        <th style="border: 1px solid black;">Agama</th>
+				        <th style="border: 1px solid black;">Pekerjaan</th>
+				        <th style="border: 1px solid black;">Status Perkawinan</th>
+				        <th style="border: 1px solid black;">Status dalam Keluarga</th>
+				        <th style="border: 1px solid black;">Kewarganegaraan</th>
+					</tr>
+				</thead>
+				
+				
+				<tbody th:each="penduduk,iterationStatus: ${keluarga.anggotaKeluarga}">
+					<tr>
+						<td style="border: 1px solid black;" th:text="${iterationStatus.count}"></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.nama}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.nik}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.jenis_kelamin=='1'}? 'Wanita' : 'Pria'"></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.tempat_lahir}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.tanggal_lahir}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.agama}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.pekerjaan}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.status_perkawinan}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.status_dalam_keluarga}" ></td>
+	       				<td style="border: 1px solid black;" th:text="${penduduk.is_wni=='1'}? 'WNI' : 'WNA'"></td> 
+	       			</tr>
+				    </tbody>
+				  </table>
+				</div>
+			</div>
+			<div th:replace="fragments/fragment :: footer"></div>
+    </body>
+ </html>

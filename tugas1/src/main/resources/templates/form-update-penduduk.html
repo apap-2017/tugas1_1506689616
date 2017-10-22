@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<div style="padding: 240px; padding-top: 30px;">
+	    	<form th:action="@{/penduduk/ubah/} + ${penduduk.nik}" method="post" th:object="${penduduk}">
+	    		 <div class="form-group">
+				    <label for="nama">Masukkan Nama:</label>
+				    <input type="text" class="form-control" name="nama" th:value="${penduduk.nama}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="tempat-lahir">Tempat Lahir:</label>
+				    <input type="text" class="form-control" name="tempat_lahir" th:value="${penduduk.tempat_lahir}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="tanggal-lahir">Tanggal Lahir:</label>
+				    <input type="date" class="form-control" name="tanggal_lahir" th:value="${penduduk.tanggal_lahir}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="jenis-kelamin">Jenis Kelamin:</label>
+				    <select class="form-control" name="jenis_kelamin" th:field="${penduduk.jenis_kelamin}">
+				    	<option value="0"> Pria </option>
+				    	<option value="1"> Wanita </option>
+				    </select>
+				  </div>
+				  <div class="form-group">
+					  <label for="golongan-darah">Golongan Darah:</label>
+					   <input type="text" class="form-control" name="golongan_darah" th:value="${penduduk.golongan_darah}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="agama">Agama:</label>
+				    <input type="text" class="form-control" name="agama" th:value="${penduduk.agama}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="status-kawin">Status Perkawinan:</label>
+				    <select class="form-control" name="status_perkawinan" th:field="${penduduk.status_perkawinan}">
+				    	<option value='Kawin'> Kawin </option>
+				    	<option value='Belum Kawin'> Belum Kawin </option>
+				    	<option value='Cerai Hidup'> Cerai Hidup </option>
+				    	<option value='Cerai Mati'> Cerai Mati </option>
+				    </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="pekerjaan">Pekerjaan:</label>
+				    <input type="text" class="form-control" name="pekerjaan" th:value="${penduduk.pekerjaan}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="kewarganegaraan">Kewarganegaraan:</label>
+				    <select class="form-control" name="is_wni" th:field="${penduduk.is_wni}">
+							<option value='1'> WNI </option>
+				    		<option value='0'> WNA </option>
+	
+				    </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="status">Status Dalam Keluarga:</label>
+				    <input type="text" class="form-control" name="status_dalam_keluarga" th:value="${penduduk.status_dalam_keluarga}" required="required"/>
+				  </div>
+				  <div class="form-group">
+				    <label for="status-kematian">Status Kematian:</label>
+				  		<select class="form-control" id="status-kematian" name="is_wafat" th:field="${penduduk.is_wafat}">
+							<option value='0'> Hidup </option>
+				    		<option value='1'> Wafat </option>
+				    </select>
+				  </div>
+				  <div class="form-group">
+				    <label for="id-keluarga">Id keluarga:</label>
+				    <input type="text" class="form-control" name="id_keluarga" th:value="${penduduk.id_keluarga}" required="required"/>
+				  </div>
+				  <button type="submit" class="btn btn-default" name="action" value="save">Submit</button>
+			</form>
+		</div>
+		<div th:replace="fragments/fragment :: footer"></div>
+		<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>

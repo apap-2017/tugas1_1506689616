@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	 <h1>All Penduduk</h1>
+    	<div>    	
+  			<table id="data" class="display" cellspacing="0" width="100%">
+  				<thead>
+  					<tr>
+  						<th>NIK</th>
+				        <th>Nama</th>
+				        <th>Jenis Kelamin</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr th:each="penduduk,iterationStatus: ${dataPenduduk}">
+	       			<td th:text="${penduduk.nik}"></td>
+	       			<td th:text="${penduduk.nama}"></td>
+	       			<td th:text="${penduduk.jenis_kelamin}=='0'? 'Pria' : 'Wanita'"></td>
+       			</tr>
+			    </tbody>
+  			</table>
+	       	<hr/>
+       	</div>
+    	<div th:replace="fragments/fragment :: footer"></div>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+		
+		<script>
+	       	$(document).ready(function() {
+	       	    $('#data').DataTable( {
+	       	    	"ordering": false,
+	       	    	"paging" : true,
+	       	    	"scrollY" : 370
+	       	    });
+	       	});
+       	</script>
+    </body>
+</html>

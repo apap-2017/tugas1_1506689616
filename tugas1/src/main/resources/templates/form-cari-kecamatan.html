@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments/fragment :: head"></head>
+    <body style="background-color: #caced1;">
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<form action="/penduduk/cari" method="get">
+    		<div class="form-group">
+			    <label for="nama_kota">Kota:</label>
+			    <select class="form-control" name="kt" disabled="disabled">
+			    	<option th:value="${id_kota}" th:text="${nama_kota}"> Kota-X </option>
+			    </select>
+			  </div>
+			  <input type="hidden" th:value="${id_kota}" name="kt" />
+			  <div class="form-group">
+			    <label for="nama_kota">Kecamatan:</label>
+			    <select class="form-control" name="kc">
+			    	<option> Pilih Kecamatan </option>
+			    	<option th:each="kecamatan,iterationStatus: ${allKecamatan}" th:value="${kecamatan.id}" th:text="${kecamatan.nama_kecamatan}"> Kecamatan-X </option>
+			    </select>
+			  </div>
+			  <button class="btn btn-primary" style="padding: 10px; padding-left: 20px; padding-right: 20px; margin-top: 10px;" type="submit">Lihat</button>
+    	</form>
+    	
+    	<div th:replace="fragments/fragment :: footer"></div>
+		<script src="/jquery/jquery-3.2.1.min.js"></script>    
+		<script src="/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
